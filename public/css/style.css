@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: red;
 }
 .eraser {
     clear: both;
@@ -58,4 +59,25 @@ body {
     width: 40px;
     border: 3px solid #ececec;
     border-radius: 30px;
+}
+.album-img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    display: block;
+}
+.proggres-bar {
+    margin: 10px 20px;
+}
+.start-time {
+    float: left;
+}
+.end-time {
+    float: right;
+}
+.zip {
+    width: 100%;
+    height: 1px;
+    background-color: #cecece;
+    margin: 0 auto;
 }

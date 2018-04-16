@@ -1,4 +1,5 @@
 import {loadTracks} from './loaders.js';
+import MusicPlayer from './MusicPlayer.js';
 
 loadTracks("tracks").then(tracks => {
 	tracks.song.forEach(element => {
@@ -8,18 +9,8 @@ loadTracks("tracks").then(tracks => {
                 src, 
                 color} = element;
 
-        createTrack(title, artist, img, src, color);
+        const musicPlayer = new MusicPlayer();
+        musicPlayer.addTrack(title, artist, img, src, color);
+        musicPlayer.create();
     });
 });
-
-function createTrack(title, artist, img, src, color) {
-        const audio = document.createElement('audio');
-        audio.setAttribute('src', src);
-        audio.setAttribute('controls', 'controls');
-        document.body.appendChild(audio);
-
-        let h3 = document.createElement('h3');
-        let tmpH3 = document.createTextNode(title);
-        h3.appendChild(tmpH3);
-        document.body.appendChild(h3);
-}
