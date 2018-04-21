@@ -8,9 +8,11 @@ loadTracks("tracks").then(tracks => {
 
     initializeTracks(musicPlayer, tracks);
 
-    musicPlayer.nextTrack();
-    musicPlayer.prevTrack();
+    // musicPlayer.nextTrack();
+    musicPlayer.addButton();
+    musicPlayer.start();
+    // musicPlayer.prevTrack();
     musicPlayer.update();
-    musicPlayer.startButton();
-    musicPlayer.pauseButton();
+    // musicPlayer.startButton();
+    // musicPlayer.pauseButton();
 });
