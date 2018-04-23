@@ -8,8 +8,8 @@ export default class MusicPlayer {
         this.buttons = [];
     }
 
-    addTrack(title, artist, img, src, color, display) {
-        this.tracks.push(new CreateTrack(title, artist, img, src, color, display));
+    addTrack(title, artist, img, src, color) {
+        this.tracks.push(new CreateTrack(title, artist, img, src, color));
     }
 
     addButton() {
@@ -19,27 +19,50 @@ export default class MusicPlayer {
         });
     }
 
-    start() {
+    start(audio) {
         this.buttons.forEach(button => {
-            button.initializeButtons(this.tracks);
+            button.initializeButtons(this.tracks, audio);
         });
+
+        this.update(audio);
     }
 
-    zipUpdate() {
-        const audio = document.querySelector('.player');
-        const dot = document.querySelector('.zip-dot');
+    zipUpdate(audio) {
+        const zipSlider = document.querySelector('.zip-slider');
 
-        let calc = ((audio.currentTime / audio.duration) * 100);
+        zipSlider.addEventListener('mousedown', function() {
+            audio.pause();
+            // const startTime = document.querySelector('.start-time2');
+            // startTime.textContent = zipSlider.value;
+        });
 
-        dot.style.left = calc + '%';
+        zipSlider.addEventListener('mouseup', function() {
+            audio.currentTime = (zipSlider.value * audio.duration) / 100;
+            audio.play();
+        });
+
+        if (!audio.paused) {
+            let calc = ((audio.currentTime / audio.duration) * 100);
+            zipSlider.value = calc;
+        }
+        // dot.style.left = calc + '%';
     }
 
-    update() {
+    volume(audio) {
+        const volume = document.querySelector('.volume-slider');
+
+        audio.volume = (volume.value / 100);
+
+    }
+
+    update(audio) {
         const timer = new Timer();
-        this.zipUpdate();
+
+        this.zipUpdate(audio);
+        this.volume(audio);
 
         requestAnimationFrame(() => {
-            this.update();
+            this.update(audio);
         }, 1000);
     }
 }

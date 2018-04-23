@@ -6,22 +6,21 @@ export default class Buttons {
     constructor(name, event) {
         this.name = name;
         this.event = event;
-        this.audio = document.querySelector('.player');
     }
 
-    initializeButtons(tracks) {
+    initializeButtons(tracks, audio) {
 
         if(this.name == 'btn-next')
-            this.nextTrack(tracks);
+            this.nextTrack(tracks, audio);
         else if(this.name =='btn-prev')
-            this.prevTrack(tracks);
+            this.prevTrack(tracks, audio);
         else if(this.name == 'btn-start')
-            this.startButton();
+            this.startButton(audio);
         else if(this.name == 'btn-pause')
-            this.pauseButton();
+            this.pauseButton(audio);
     }
 
-    nextTrack(tracks) {
+    nextTrack(tracks, audio) {
         const buttonNext = document.querySelector(`.${this.name}`);
         const tmpTracks = tracks;
 
@@ -35,10 +34,11 @@ export default class Buttons {
             }
 
             creator(tmpTracks, COUNTER);
+            audio.play();
         });
     }
 
-    prevTrack(tracks) {
+    prevTrack(tracks, audio) {
         const buttonPrev = document.querySelector(`.${this.name}`);
         const tmpTracks = tracks;
 
@@ -52,24 +52,23 @@ export default class Buttons {
             }
 
             creator(tmpTracks, COUNTER);
+            audio.play();
         });
     }
 
-    startButton() {
+    startButton(audio) {
         const start = document.querySelector(`.${this.name}`);
-        
-        let _audio = this.audio;
+
         start.addEventListener('click', function() {
-            _audio.play();
+            audio.play();
         })
     }
 
-    pauseButton() {
+    pauseButton(audio) {
         const pause = document.querySelector(`.${this.name}`);
 
-        let _audio = this.audio;
         pause.addEventListener('click', function() {
-            _audio.pause();
-        })
+            audio.pause();
+        });
     }
 }
