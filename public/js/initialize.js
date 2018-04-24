@@ -6,9 +6,8 @@ export function initializeTracks(musicPlayer, tracks) {
                 artist, 
                 img, 
                 src, 
-                color,
-                display} = element;
+                color} = element;
 
-        musicPlayer.addTrack(title, artist, img, src, color, display);
+        musicPlayer.addTrack(title, artist, img, src, color);
     });
 }

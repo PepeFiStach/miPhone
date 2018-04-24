@@ -1,11 +1,15 @@
 import CreateTrack from './CreateTrack.js';
 import Timer from './Timer.js';
 import Buttons from './Buttons.js';
+import Zips from './Zips.js';
 
 export default class MusicPlayer {
     constructor() {
         this.tracks = [];
         this.buttons = [];
+
+        this.timer = new Timer();
+        this.zips = new Zips(this.timer, this.timer.startTime);
     }
 
     addTrack(title, artist, img, src, color) {
@@ -25,41 +29,20 @@ export default class MusicPlayer {
         });
 
         this.update(audio);
-    }
 
-    zipUpdate(audio) {
-        const zipSlider = document.querySelector('.zip-slider');
-
-        zipSlider.addEventListener('mousedown', function() {
-            audio.pause();
-            // const startTime = document.querySelector('.start-time2');
-            // startTime.textContent = zipSlider.value;
-        });
-
-        zipSlider.addEventListener('mouseup', function() {
-            audio.currentTime = (zipSlider.value * audio.duration) / 100;
-            audio.play();
-        });
-
-        if (!audio.paused) {
-            let calc = ((audio.currentTime / audio.duration) * 100);
-            zipSlider.value = calc;
-        }
-        // dot.style.left = calc + '%';
-    }
-
-    volume(audio) {
-        const volume = document.querySelector('.volume-slider');
-
-        audio.volume = (volume.value / 100);
-
+        this.zips.zipSlider.oninput = () => this.zips.zipUpdateTime(audio, this.zips.zipSlider);
     }
 
     update(audio) {
-        const timer = new Timer();
+        this.timer.setAcctualTime(audio);
+        this.timer.setFinishTime(audio);
 
-        this.zipUpdate(audio);
-        this.volume(audio);
+        if (Math.floor(audio.currentTime == audio.duration)) {
+            const nextTrack = document.querySelector('.btn-next').click();
+        }
+
+        this.zips.zipUpdate(audio);
+        this.zips.zipVolume(audio);
 
         requestAnimationFrame(() => {
             this.update(audio);

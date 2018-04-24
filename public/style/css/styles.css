@@ -8,7 +8,8 @@
   clear: both; }
 
 body {
-  background-color: #c3af50; }
+  background-color: #c3af50;
+  transition: background-color 0.5s linear; }
 
 .wrapper {
   display: flex;

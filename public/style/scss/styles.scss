@@ -11,6 +11,7 @@
 
 body {
     background-color: #c3af50;
+    transition: background-color 0.5s linear;
 }
 
 .wrapper {
@@ -58,6 +59,9 @@ body {
 .screen {
     height: 400px;
     background-color: #222;
+    // background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg")
+    // no-repeat center rgba($color: #000000, $alpha: 0.6);
+    // background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg");
     position: relative;
 
     .album-img {

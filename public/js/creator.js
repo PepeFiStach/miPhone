@@ -13,6 +13,12 @@ export function creator(tracks, counter = 0) {
 
             const p = document.querySelector('p');
             p.textContent = track.artist;
+
+            const body = document.querySelector('body');
+            body.style.backgroundColor = track.color;
+
+            const screen = document.querySelector('.screen');
+            screen.style.backgroundColor = track.img;
         }
     });
 }

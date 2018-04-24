@@ -1,17 +1,13 @@
 export default class Timer {
     constructor() {
-        const audio = document.querySelector('.player');
+        this.startTime = document.querySelector('.start-time');
+        this.endTime = document.querySelector('.end-time');
 
-        const startTime = document.querySelector('.start-time');
-        startTime.textContent = this.acctualTime(audio);
-
-        const endTime = document.querySelector('.end-time');
-        endTime.textContent = this.finishTime(audio);
     }
 
-    acctualTime(audio) {
+    acctualTime(calcTime) {
         let time1 = 0;
-        let time2 = Math.floor(audio.currentTime);
+        let time2 = Math.floor(calcTime);
         let zero = "";
 
         while(time2 > 59) {
@@ -25,6 +21,16 @@ export default class Timer {
 
         let actuallyTime = time1 + ":"+ zero + time2;
         return actuallyTime; 
+    }
+
+    setAcctualTime(audio) {
+        if (!audio.paused) {
+            this.startTime.textContent = this.acctualTime(audio.currentTime);
+        }
+    }
+
+    setFinishTime(audio) {
+        this.endTime.textContent = this.finishTime(audio);
     }
 
     finishTime(audio) {
