@@ -36,6 +36,10 @@ export default class Timer {
     finishTime(audio) {
         let time1 = 0;
         let time2 = Math.floor(audio.duration);
+        
+        if (isNaN(time2))
+            time2 = 0;
+
         let zero = "";
 
         while(time2 > 59) {

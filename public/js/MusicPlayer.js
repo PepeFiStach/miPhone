@@ -42,7 +42,7 @@ export default class MusicPlayer {
         }
 
         this.zips.zipUpdate(audio);
-        this.zips.zipVolume(audio);
+        // this.zips.zipVolume(audio);
 
         requestAnimationFrame(() => {
             this.update(audio);

@@ -1,15 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: red; }
+  color: #cecece; }
 
 .eraser {
   clear: both; }
 
-body {
+body, html {
   background-color: #c3af50;
-  transition: background-color 0.5s linear; }
+  transition: background-color 0.5s linear;
+  font-family: 'Roboto', sans-serif; }
 
 .wrapper {
   display: flex;
@@ -46,41 +48,130 @@ body {
     background-color: #cecece;
     border-radius: 30px; }
 
+.screen::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg");
+  background-size: cover;
+  opacity: 0.15;
+  filter: blur(4px); }
+
 .screen {
   height: 400px;
   background-color: #222;
-  position: relative; }
+  position: relative;
+  text-align: center; }
+  .screen .nav-bar {
+    width: 100%;
+    height: 20px; }
   .screen .album-img {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+    margin: 10px auto;
     display: block; }
+  .screen .title {
+    margin-bottom: 5px;
+    font-size: 16px; }
+  .screen .artist {
+    margin-bottom: 5px;
+    font-size: 13px; }
 
 .proggres-bar {
-  margin: 10px 20px; }
-  .proggres-bar .start-time {
-    float: left; }
+  margin: 10px 20px;
+  position: relative;
+  z-index: 99; }
+  .proggres-bar .start-time, .proggres-bar .end-time {
+    float: left;
+    font-size: 11px; }
   .proggres-bar .end-time {
     float: right; }
   .proggres-bar .zip {
     width: 100%;
-    height: 2px;
-    background-color: #cecece;
-    margin: 0 auto;
-    margin-top: 10px; }
-    .proggres-bar .zip .zip-dot {
-      width: 10px;
-      height: 10px;
-      background-color: brown;
-      left: 0%;
-      position: relative; }
-  .proggres-bar .volume {
-    margin-top: 10px;
-    width: 50px; }
-    .proggres-bar .volume .volume-slider {
-      width: 100%; }
+    margin: 0 auto; }
+    .proggres-bar .zip .zip-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 15px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s; }
+    .proggres-bar .zip .zip-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #4CAF50;
+      cursor: pointer; }
+    .proggres-bar .zip .zip-slider::-moz-range-thumb {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #4CAF50;
+      cursor: pointer; }
+    .proggres-bar .zip .zip-slider::hover {
+      opacity: 1; }
+  .proggres-bar .controll-panel {
+    width: 100%;
+    display: table;
+    margin-top: -10px; }
+    .proggres-bar .controll-panel .btn-next, .proggres-bar .controll-panel .btn-prev, .proggres-bar .controll-panel .btn-start {
+      background-image: url("img/next.png");
+      background-color: transparent;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
+      display: inline-block;
+      background-size: contain;
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+      display: table-cell; }
+    .proggres-bar .controll-panel .btn-prev {
+      background-image: url("img/prev.png");
+      width: 30px;
+      height: 30px; }
+    .proggres-bar .controll-panel .btn-start {
+      background-image: url("img/play.png");
+      width: 80px;
+      height: 80px; }
+    .proggres-bar .controll-panel .volume {
+      width: 50px; }
+      .proggres-bar .controll-panel .volume .volume-slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 5px;
+        border-radius: 15px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s; }
+      .proggres-bar .controll-panel .volume .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer; }
+      .proggres-bar .controll-panel .volume .volume-slider::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer; }
+      .proggres-bar .controll-panel .volume .volume-slider::hover {
+        opacity: 1; }
   .proggres-bar button {
-    margin-top: 30px; }
+    margin-top: 10px; }
 
 .home-button {
   margin: 15px auto;

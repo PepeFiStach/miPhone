@@ -1,17 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: red;
+    color: #cecece;
 }
 
 .eraser {
     clear: both;
 }
 
-body {
+body, html {
     background-color: #c3af50;
     transition: background-color 0.5s linear;
+    font-family: 'Roboto', sans-serif;    
 }
 
 .wrapper {
@@ -56,27 +59,57 @@ body {
     }
 }
 
+.screen::after {
+    content: "";
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg");
+    background-size: cover;
+    opacity: 0.15;
+    filter: blur(4px);
+}
+
 .screen {
     height: 400px;
     background-color: #222;
-    // background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg")
-    // no-repeat center rgba($color: #000000, $alpha: 0.6);
-    // background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/308622/rockstar-album-cover.jpg");
     position: relative;
+    text-align: center;
 
+    .nav-bar {
+        width: 100%;
+        height: 20px;
+    }
+    
     .album-img {
-        width: 150px;
-        height: 150px;
-        margin: 0 auto;
+        width: 180px;
+        height: 180px;
+        margin: 10px auto;
         display: block;
     }
+    
+    .title {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .artist {
+        margin-bottom: 5px;
+        font-size: 13px;
+    }
+
 }
 
 .proggres-bar {
     margin: 10px 20px;
+    position: relative;
+    z-index: 99;
 
-    .start-time {
+    .start-time, .end-time {
         float: left;
+        font-size: 11px;
     }
 
     .end-time {
@@ -85,31 +118,116 @@ body {
 
     .zip {
         width: 100%;
-        height: 2px;
-        background-color: #cecece;
         margin: 0 auto;
-        margin-top: 10px;
 
-        .zip-dot {
-            width: 10px;
-            height: 10px;
-            background-color: brown;
-            left: 0%;
-            position: relative;
+        .zip-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 5px;
+            border-radius: 15px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .zip-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .zip-slider::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .zip-slider::hover {
+            opacity: 1;
         }
     }
 
-    .volume {
-        margin-top: 10px;
-        width: 50px;
+    .controll-panel {
+        width: 100%;
+        display: table;
+        margin-top: -10px;
 
-        .volume-slider {
-            width: 100%;
+        .btn-next, .btn-prev, .btn-start {
+            background-image: url('img/next.png');
+            background-color: transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+            display: inline-block;
+            background-size: contain;
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            display: table-cell;
+        }
+
+        .btn-prev {
+            background-image: url('img/prev.png');
+            width: 30px;
+            height: 30px;
+        }
+
+        .btn-start {
+            background-image: url('img/play.png');
+            width: 80px;
+            height: 80px;
+        }
+
+        .volume {
+            // margin-top: 10px;
+            width: 50px;
+
+            .volume-slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 5px;
+                border-radius: 15px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+            }
+
+            .volume-slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #4CAF50;
+                cursor: pointer;
+            }
+
+            .volume-slider::-moz-range-thumb {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #4CAF50;
+                cursor: pointer;
+            }
+
+            .volume-slider::hover {
+                opacity: 1;
+            }
         }
     }
 
     button {
-        margin-top: 30px;
+        margin-top: 10px;
     }
 }
 
